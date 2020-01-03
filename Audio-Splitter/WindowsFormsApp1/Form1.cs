@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +22,9 @@ namespace WindowsFormsApp1
         string outputPath;
         string stems;
 
-
         // Audio variables
         double currentAudioTimeStamp;
         bool isPLaying;
-        bool _debugMode;
         Panel waveFormPanel;
         List<NAudio.Gui.WaveViewer> wvs;
         List<CheckBox> muteButtons;
@@ -45,6 +44,13 @@ namespace WindowsFormsApp1
 
         private MethodInvoker updateTBVal;
         private MethodInvoker updateWVs;
+
+        // Dev variables
+        bool _debugMode;
+        bool _writeOutputToText;
+        FileStream fs;
+        StreamWriter sw;
+        TextWriter oldOut = Console.Out;
 
         public AudioSplitter() {
             InitializeComponent();
@@ -71,7 +77,8 @@ namespace WindowsFormsApp1
 
 
             // Defaults
-            _debugMode = false;
+            _debugMode = true;
+            _writeOutputToText = true;
 
             stems = "0";
             currentAudioTimeStamp = 0.0f;   // in seconds
@@ -101,6 +108,17 @@ namespace WindowsFormsApp1
                 {4, new string[]{ "vocals", "bass", "drums", "other" } },
                 {5, new string[]{ "vocals", "bass", "drums", "piano", "other" } },
             };
+
+            if (_writeOutputToText) {
+                //fs = new FileStream((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), FileMode.Append);
+                fs = new FileStream("./output.txt", FileMode.Append, FileAccess.Write);
+                sw = new StreamWriter(fs);
+                Console.SetOut(sw);
+
+                Console.WriteLine("---------------------------------------");
+                Console.WriteLine(DateTime.Now);
+                Console.WriteLine("");
+            }
         }
 
         // UI for user input
@@ -141,7 +159,21 @@ namespace WindowsFormsApp1
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
             cmd.WaitForExit();
+
+
+            Console.WriteLine("\n\n----------Start of spleeter shell script output----------");
             Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+            Console.WriteLine("----------End of spleeter shell script output----------\n\n");
+
+            //if (_writeOutputToText) {
+            //    Console.WriteLine("writing cmd output to " + (System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"));
+            //    using (System.IO.StreamWriter file =
+            //        new System.IO.StreamWriter((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), true)) {
+            //        file.WriteLine("spleeter shell script output:");
+            //        file.WriteLine(outputStr);
+            //        file.WriteLine("end of spleeter shell script output");
+            //    }
+            //}
 
             // Change the source path if youtube link is used
             // since we do not know the name of the folder
@@ -157,6 +189,7 @@ namespace WindowsFormsApp1
             DisplayWaveForms(Int32.Parse(stems));
 
             cmd.Dispose();         
+
         }
 
         private void SourceBtn_Click(object sender, EventArgs e) {
@@ -652,13 +685,22 @@ namespace WindowsFormsApp1
 
         protected override void Dispose(bool disposing) {
             if (disposing && (components != null)) {
+
+                if (_writeOutputToText) {
+                    Console.SetOut(oldOut);
+                    sw.Close();
+                    fs.Close();
+                }
+
                 // clean up resources from designer
                 components.Dispose();
 
                 // clean-up resources from this form
                 waveFormPanel.Dispose();
                 timeLabel.Dispose();
-                tb.Dispose();
+                if (tb != null) {
+                    tb.Dispose();
+                }
 
                 closingForm = true;
             }

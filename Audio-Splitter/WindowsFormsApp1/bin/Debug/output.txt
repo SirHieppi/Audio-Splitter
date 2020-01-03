@@ -1,0 +1,52 @@
+---------------------------------------
+1/3/2020 12:01:59 AM
+
+---------------------------------------
+1/3/2020 12:02:07 AM
+
+---------------------------------------
+1/3/2020 12:04:25 AM
+
+bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+Microsoft Windows [Version 10.0.18362.535]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>pwd
+/cygdrive/c/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Debug
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>cd ../../
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1>bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+Processing local audio file with spleeter...
+./python.exe ./Scripts/spleeter.exe separate -i C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 -p spleeter:2stems -o C:/Users/SirHieppi/Music
+Done
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1>
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav to wv 0
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav to wv 1
+---------------------------------------
+1/3/2020 12:08:30 AM
+
+bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+-----Start of spleeter shell script output-----
+Microsoft Windows [Version 10.0.18362.535]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>pwd
+/cygdrive/c/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Debug
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>cd ../../
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1>bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+Processing local audio file with spleeter...
+./python.exe ./Scripts/spleeter.exe separate -i C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 -p spleeter:2stems -o C:/Users/SirHieppi/Music
+Done
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1>
+-----End of spleeter shell script output-----
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav to wv 0
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav to wv 1

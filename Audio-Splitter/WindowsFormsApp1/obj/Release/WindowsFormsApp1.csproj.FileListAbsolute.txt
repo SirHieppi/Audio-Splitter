@@ -10,3 +10,15 @@ C:\Users\SirHieppi\source\repos\WindowsFormsApp1\WindowsFormsApp1\bin\Release\Au
 C:\Users\SirHieppi\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Release\AudioSplitter.Properties.Resources.resources
 C:\Users\SirHieppi\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Release\Audio-Splitter.exe
 C:\Users\SirHieppi\source\repos\WindowsFormsApp1\WindowsFormsApp1\obj\Release\Audio-Splitter.pdb
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release\Audio-Splitter.exe.config
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release\Audio-Splitter.exe
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release\Audio-Splitter.pdb
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release\NAudio.dll
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release\NAudio.xml
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\WindowsFormsApp1.AudioSplitter.resources
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\AudioSplitter.Properties.Resources.resources
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\WindowsFormsApp1.csproj.CopyComplete
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\Audio-Splitter.exe
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\obj\Release\Audio-Splitter.pdb
