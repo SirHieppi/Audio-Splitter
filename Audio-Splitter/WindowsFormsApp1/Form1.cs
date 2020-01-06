@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
 
 
             // Defaults
-            _debugMode = true;
+            _debugMode = false;
             _writeOutputToText = true;
 
             stems = "0";
