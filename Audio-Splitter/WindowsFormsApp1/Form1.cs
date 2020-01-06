@@ -316,12 +316,14 @@ namespace WindowsFormsApp1
             string command = (
                 "bash " +
                 shellScriptPath + " " +
-                sourceType + " " +
-                source + " " +
+                sourceType + " '" +
+                source + "' " +
                 outputPath + " " +
                 stems);
 
             command = command.Replace("\\", "/");
+            //command = command.Replace("(", "\\(");
+            //command = command.Replace(")", "\\)");
 
             Console.WriteLine(command);
 

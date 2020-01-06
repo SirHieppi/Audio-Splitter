@@ -50,3 +50,49 @@ audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav
 audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav
 plotting C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav to wv 0
 plotting C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav to wv 1
+---------------------------------------
+1/5/2020 7:38:29 PM
+
+bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+
+
+----------Start of spleeter shell script output----------
+Microsoft Windows [Version 10.0.18362.535]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>pwd
+/cygdrive/c/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Debug
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>
+----------End of spleeter shell script output----------
+
+
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav to wv 0
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav to wv 1
+---------------------------------------
+1/5/2020 7:38:53 PM
+
+bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+
+
+----------Start of spleeter shell script output----------
+Microsoft Windows [Version 10.0.18362.535]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>pwd
+/cygdrive/c/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Debug
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>bash ./spleeterHandler -file C:/Users/SirHieppi/Music/Lauv-Feelings.mp3 C:/Users/SirHieppi/Music 2
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Debug>
+----------End of spleeter shell script output----------
+
+
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav
+audio path: C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\vocals.wav to wv 0
+plotting C:\Users\SirHieppi\Music\Lauv-Feelings\accompaniment.wav to wv 1
