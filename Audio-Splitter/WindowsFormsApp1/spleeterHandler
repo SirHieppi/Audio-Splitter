@@ -60,7 +60,7 @@ audioFormat="mp3"
 if [ $1 = "-file" ]; then
 	echo "Processing local audio file with spleeter..."
 	cmd="./python.exe ./Scripts/spleeter.exe separate -i $2 -p spleeter:$stems -o $outputPath"
-
+	echo "Processed local audio file at $outputPath"
 	echo $cmd | sh                                                         
 
 elif [ $1 = "-link" ]; then
