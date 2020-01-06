@@ -183,10 +183,10 @@ namespace WindowsFormsApp1
                 Console.WriteLine("The source is now " + source);
             }
 
-            //InitializeWaveOuts();
+            InitializeWaveOuts();
 
             // Display wave forms
-            //DisplayWaveForms(Int32.Parse(stems));
+            DisplayWaveForms(Int32.Parse(stems));
 
             cmd.Dispose();         
 
@@ -262,6 +262,8 @@ namespace WindowsFormsApp1
 
             if (_debugMode) {
                 cmd.StandardInput.WriteLine("cd ../../spleeterEnvP362");
+            } else {
+                cmd.StandardInput.WriteLine("cd spleeterEnvP362");
             }
 
             Console.WriteLine("getting folder name from " + source);
