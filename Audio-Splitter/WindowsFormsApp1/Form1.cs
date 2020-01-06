@@ -96,12 +96,12 @@ namespace WindowsFormsApp1
 
             if (_debugMode) {
                 // Currently in /bin/debug
-                shellScriptPath = "spleeterHandler";
+                shellScriptPath = "spleeterHandler.bat";
                 //outputPath = "..\\..";
             }
             else {
-                shellScriptPath = "spleeterHandler";
-                outputPath = "";
+                shellScriptPath = "spleeterHandler.bat";
+                // outputPath = "";
             }
             audioNames = new Dictionary<int, string []> {
                 {2, new string[]{ "vocals", "accompaniment" } },
@@ -154,7 +154,7 @@ namespace WindowsFormsApp1
             if (_debugMode) {
                 cmd.StandardInput.WriteLine("cd ../../");
             }
-
+            Console.WriteLine("command to run bat is " + CreateCommand());
             cmd.StandardInput.WriteLine(CreateCommand());
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
@@ -315,11 +315,10 @@ namespace WindowsFormsApp1
 
             string command = (
                 //"bash " +
-                "sh " +
                 shellScriptPath + " " +
-                sourceType + " '" +
-                source + "' " +
-                outputPath + " " +
+                sourceType + " \"" +
+                source + "\" \"" +
+                outputPath + "\" " +
                 stems);
 
             command = command.Replace("\\", "/");
