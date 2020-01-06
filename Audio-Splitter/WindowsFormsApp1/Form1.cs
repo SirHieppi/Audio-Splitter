@@ -96,12 +96,12 @@ namespace WindowsFormsApp1
 
             if (_debugMode) {
                 // Currently in /bin/debug
-                shellScriptPath = "./spleeterHandler";
+                shellScriptPath = "spleeterHandler";
                 //outputPath = "..\\..";
             }
             else {
-                shellScriptPath = "./spleeterHandler";
-                outputPath = "./";
+                shellScriptPath = "spleeterHandler";
+                outputPath = "";
             }
             audioNames = new Dictionary<int, string []> {
                 {2, new string[]{ "vocals", "accompaniment" } },
@@ -183,10 +183,10 @@ namespace WindowsFormsApp1
                 Console.WriteLine("The source is now " + source);
             }
 
-            InitializeWaveOuts();
+            //InitializeWaveOuts();
 
             // Display wave forms
-            DisplayWaveForms(Int32.Parse(stems));
+            //DisplayWaveForms(Int32.Parse(stems));
 
             cmd.Dispose();         
 
@@ -314,7 +314,8 @@ namespace WindowsFormsApp1
             }
 
             string command = (
-                "bash " +
+                //"bash " +
+                "sh " +
                 shellScriptPath + " " +
                 sourceType + " '" +
                 source + "' " +
