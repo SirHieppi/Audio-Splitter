@@ -149,7 +149,7 @@ namespace WindowsFormsApp1
             cmd.StartInfo.UseShellExecute = false;
             cmd.Start();
 
-            cmd.StandardInput.WriteLine("pwd");
+            //cmd.StandardInput.WriteLine("pwd");
 
             if (_debugMode) {
                 cmd.StandardInput.WriteLine("cd ../../");
@@ -289,10 +289,9 @@ namespace WindowsFormsApp1
 
         private bool CheckUserInputs() {
             // no youtube link or source provided
-            if (YoutubeLinkTextBox.Text == "Enter youtube link" && SourceTextBox.Text == "") {
+            if (source == "") {
                 string sourceErrorText = "Please choose source or enter youtube link";
                 sourceErrorProvider.SetError(SourceTextBox, sourceErrorText);
-                
 
                 return false;
             }
