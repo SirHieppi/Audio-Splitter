@@ -22,7 +22,7 @@ IF "%type%"  == "-file" (
 ) ELSE (
     ECHO using link
     SET fileName=""
-    SET cmd=python.exe youtube-dl --get-filename -o "%%(title)s.mp3" %source% --restrict-filenames --ffmpeg-location ../ffmpeg/bin
+    SET cmd=python.exe youtube-dl --get-filename -o "%%(title)s.mp3" %source% --restrict-filenames
     FOR /F "tokens=*" %%i IN ('python.exe youtube-dl --get-filename -o "%%(title)s.mp3" %source% --restrict-filenames --ffmpeg-location ../ffmpeg/bin') DO SET fileName=%%i
 	:wait
 	IF "%fileName%" == "" goto wait
@@ -30,9 +30,8 @@ IF "%type%"  == "-file" (
     ECHO Grabbing audio from youtube link...
 
     python.exe youtube-dl %source% -o "../temp/%fileName%" -x --audio-format %audioFormat% --ffmpeg-location ../ffmpeg/bin
-
     ECHO Processing audio from youtube link with spleeter...
-
+	ECHO python.exe Scripts/spleeter.exe separate -i "../temp/%fileName%" -p spleeter:%stems%stems -o %outputPath%
     python.exe Scripts/spleeter.exe separate -i "../temp/%fileName%" -p spleeter:%stems%stems -o %outputPath%
 )
 
