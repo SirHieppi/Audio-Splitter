@@ -641,11 +641,12 @@ namespace WindowsFormsApp1
 
         private void PlotWaveForm(NAudio.Gui.WaveViewer wv, string waveFormName, int position) {
             //string filePath = outputPath + "\\spleeterOutput\\" + waveFormName + ".wav";
-            string filePath = source.Replace(".mp3", "\\") + waveFormName + ".wav";
+            //string filePath = source.Replace(".mp3", "\\") + "\\" + waveFormName + ".wav";
+            string audioFilePath = outputPath + "\\" + Path.GetFileName(source).Replace(".mp3", "\\") + waveFormName + ".wav";
 
-            Console.WriteLine("plotting " + filePath + " to " + wv.Name);
+            Console.WriteLine("plotting " + audioFilePath + " to " + wv.Name);
             wv.SamplesPerPixel = 2000;
-            wv.WaveStream = new NAudio.Wave.WaveFileReader(filePath);
+            wv.WaveStream = new NAudio.Wave.WaveFileReader(audioFilePath);
             // Get bytes per second times how many seconds wanted
             if (position == 0) {
                 wv.StartPosition = 0;
@@ -671,7 +672,7 @@ namespace WindowsFormsApp1
                 waveOutEvents.Add(new NAudio.Wave.WaveOutEvent());
                 //string audioFilePath = outputPath + "\\spleeterOutput\\" + wvs [i].Name + ".wav";
                 //string audioFilePath = "@" + outputPath + audioNames [Int32.Parse(stems)] [i] + ".wav";
-                string audioFilePath = source.Replace(".mp3", "\\") + audioNames [Int32.Parse(stems)] [i] + ".wav";
+                string audioFilePath = outputPath + "\\" + Path.GetFileName(source).Replace(".mp3", "\\") + audioNames [Int32.Parse(stems)] [i] + ".wav";
 
                 //if (sourceType == "-file") {
                 //    audioFilePath = source.Replace(".mp3", "");

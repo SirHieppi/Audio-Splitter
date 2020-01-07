@@ -18,7 +18,7 @@ REM Paths should be encased in quotes!
 
 IF "%type%"  == "-file" (
     ECHO Processing local audio file with spleeter...
-    REM python.exe Scripts/spleeter.exe separate -i %source% -p spleeter:%stems%stems -o %outputPath%
+    python.exe Scripts/spleeter.exe separate -i %source% -p spleeter:%stems%stems -o %outputPath%
 ) ELSE (
     ECHO using link
     SET fileName=""
