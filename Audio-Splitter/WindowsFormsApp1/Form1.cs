@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Timers;
 
 namespace WindowsFormsApp1
 {
@@ -27,14 +28,18 @@ namespace WindowsFormsApp1
         bool isPLaying;
         Panel waveFormPanel;
         List<NAudio.Gui.WaveViewer> wvs;
+        List<Label> waveFormLabels;
         List<CheckBox> muteButtons;
         List<NAudio.Wave.WaveOutEvent> waveOutEvents;
         List<NAudio.Wave.WaveFileReader> waveFileReaders;
         List<bool> waveOutMutes;
         Dictionary<int, string []> audioNames;
         Label timeLabel;
-        TrackBar tb;
         TimeSpan currentTimeSpan;
+
+        // Visuals
+        TrackBar tb;
+        Button playPause;
 
         bool closingForm = false;
 
@@ -55,6 +60,19 @@ namespace WindowsFormsApp1
         public AudioSplitter() {
             InitializeComponent();
             InitializeVariables();
+            SetDefaults();
+        }
+
+        private void SetDefaults() {
+            // Defaults
+            _debugMode = true;
+            _writeOutputToText = false;
+
+            stems = "0";
+            currentAudioTimeStamp = 0.0f;   // in seconds
+            isPLaying = false;
+            outputPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+            DestinationTextBox.Text = outputPath;
         }
 
         private void InitializeVariables() {
@@ -75,20 +93,10 @@ namespace WindowsFormsApp1
                 }
             };
 
-
-            // Defaults
-            _debugMode = false;
-            _writeOutputToText = true;
-
-            stems = "0";
-            currentAudioTimeStamp = 0.0f;   // in seconds
-            isPLaying = false;
-            outputPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-            DestinationTextBox.Text = outputPath;
-
             // initialization for variables
             timeLabel = new Label();
             waveFormPanel = new Panel();
+            waveFormLabels = new List<Label>();
             waveOutEvents = new List<NAudio.Wave.WaveOutEvent>();
             waveFileReaders = new List<NAudio.Wave.WaveFileReader>();
             wvs = new List<NAudio.Gui.WaveViewer>();
@@ -109,16 +117,44 @@ namespace WindowsFormsApp1
                 {5, new string[]{ "vocals", "bass", "drums", "piano", "other" } },
             };
 
-            if (_writeOutputToText) {
-                //fs = new FileStream((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), FileMode.Append);
-                fs = new FileStream("./output.txt", FileMode.Append, FileAccess.Write);
-                sw = new StreamWriter(fs);
-                Console.SetOut(sw);
+            //if (_writeOutputToText) {
+            //    //fs = new FileStream((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), FileMode.Append);
+            //    fs = new FileStream("./output.txt", FileMode.Append, FileAccess.Write);
+            //    sw = new StreamWriter(fs);
+            //    Console.SetOut(sw);
 
-                Console.WriteLine("---------------------------------------");
-                Console.WriteLine(DateTime.Now);
-                Console.WriteLine("");
+            //    Console.WriteLine("---------------------------------------");
+            //    Console.WriteLine(DateTime.Now);
+            //    Console.WriteLine("");
+            //}
+        }
+
+        private void ResetWaveFormUI() {
+            // Remove waveforms, buttons, labels
+            for (int i = 0; i < wvs.Count; i++) {
+                this.Controls.Remove(wvs [i]);
+                this.Controls.Remove(muteButtons[i]);
+                this.Controls.Remove(waveFormLabels[i]);
             }
+            this.Controls.Remove(tb);
+            this.Controls.Remove(playPause);
+            this.Controls.Remove(timeLabel);
+
+            
+            wvs.Clear();
+            muteButtons.Clear();
+            waveFormLabels.Clear();
+            waveFileReaders.Clear();
+            waveOutEvents.Clear();
+
+
+            // Remove wave viewers
+            for (int i = 0; i < wvs.Count; i++) {
+                this.Controls.Remove(wvs [i]);
+            }
+
+            isPLaying = false;
+            InitializeVariables();
         }
 
         // UI for user input
@@ -138,18 +174,20 @@ namespace WindowsFormsApp1
                 return;
             }
 
+            ResetWaveFormUI();
+
             // Create audio files
             Process cmd = new Process();
             cmd.StartInfo.FileName = "cmd.exe";
             cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            //if (!_debugMode) {
-            //    cmd.StartInfo.CreateNoWindow = false;
-            //}
+            cmd.StartInfo.RedirectStandardOutput = false;
+            if (!_debugMode) {
+                cmd.StartInfo.CreateNoWindow = false;
+            }
             cmd.StartInfo.UseShellExecute = false;
             cmd.Start();
 
-            //cmd.StandardInput.WriteLine("pwd");
+            cmd.StandardInput.WriteLine("pwd");
 
             if (_debugMode) {
                 cmd.StandardInput.WriteLine("cd ../../");
@@ -158,37 +196,47 @@ namespace WindowsFormsApp1
             cmd.StandardInput.WriteLine(CreateCommand());
             cmd.StandardInput.Flush();
             cmd.StandardInput.Close();
-            cmd.WaitForExit();
 
+            //cmd.WaitForExit();
 
-            Console.WriteLine("\n\n----------Start of spleeter shell script output----------");
-            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
-            Console.WriteLine("----------End of spleeter shell script output----------\n\n");
+            //Console.WriteLine("\n\n----------Start of spleeter shell script output----------");
+            //Console.WriteLine(cmd.StandardOutput.ReadToEnd());
+            //Console.WriteLine("----------End of spleeter shell script output----------\n\n");
 
-            //if (_writeOutputToText) {
-            //    Console.WriteLine("writing cmd output to " + (System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"));
-            //    using (System.IO.StreamWriter file =
-            //        new System.IO.StreamWriter((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), true)) {
-            //        file.WriteLine("spleeter shell script output:");
-            //        file.WriteLine(outputStr);
-            //        file.WriteLine("end of spleeter shell script output");
-            //    }
-            //}
-
-            // Change the source path if youtube link is used
-            // since we do not know the name of the folder
-            // generated from youtube and spleeter
-            if (sourceType == "-link") {
-                source = outputPath + "\\" + getSourceFolderName();
-                Console.WriteLine("The source is now " + source);
+            if (_writeOutputToText) {
+                Console.WriteLine("writing cmd output to " + (System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"));
+                using (System.IO.StreamWriter file =
+                    new System.IO.StreamWriter((System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\output.txt"), true)) {
+                    file.WriteLine("spleeter shell script output:");
+                    file.WriteLine(cmd.StandardOutput.ReadToEnd());
+                    file.WriteLine("end of spleeter shell script output");
+                }
             }
 
-            InitializeWaveOuts();
+            while (true) {
+                if (cmd.HasExited) {
+                    //aTimer.Enabled = false;
+                    ProcessBtn.Text = "Process";
 
-            // Display wave forms
-            DisplayWaveForms(Int32.Parse(stems));
+                    // Change the source path if youtube link is used
+                    // since we do not know the name of the folder
+                    // generated from youtube and spleeter
 
-            cmd.Dispose();         
+                    if (sourceType == "-link") {
+                        source = outputPath + "\\" + getSourceFolderName();
+                        Console.WriteLine("The source is now " + source);
+                    }
+
+                    InitializeWaveOuts();
+
+                    // Display wave forms
+                    DisplayWaveForms(Int32.Parse(stems));
+
+                    cmd.Dispose();
+
+                    break;
+                }
+            }        
 
         }
 
@@ -243,6 +291,8 @@ namespace WindowsFormsApp1
                     stems = "2";
                     break;
             }
+
+            Console.WriteLine("User has selected " + stems + " stems.");
         }
 
         // Helper Functions
@@ -337,10 +387,14 @@ namespace WindowsFormsApp1
             foreach (var waveOutEvent in waveOutEvents) {
                 waveOutEvent.Stop();
             }
+
+            System.Threading.Thread.Sleep(250);
         }
 
         private void PlayAllTracks() {
             //playAudioFile();
+
+            System.Threading.Thread.Sleep(250);
 
             Console.WriteLine("Playing all tracks");
 
@@ -357,7 +411,7 @@ namespace WindowsFormsApp1
             }
 
             // start the scrolling of the trackbar
-            //StartUpdateUIThread();
+            StartUpdateUIThread();
         }
 
         private TimeSpan GetActiveTrackCurrentTime() {
@@ -377,32 +431,20 @@ namespace WindowsFormsApp1
 
             if (ts.TotalSeconds < 60) {
                 if (ts.TotalSeconds < 10) {
-                    t += "00:0" + (int)ts.TotalSeconds;
+                    t += "0:0" + (int)ts.TotalSeconds;
                 } else {
-                    t += "00:" + (int)ts.TotalSeconds;
+                    t += "0:" + (int)ts.TotalSeconds;
                 }
             } else {
-                if (ts.TotalMinutes < 10) {
-                    t += "0" + (int)ts.TotalMinutes + ":";
-
-                    if (ts.TotalSeconds % 60 < 10) {
-                        t += "0" + (int)ts.TotalMinutes + ":0" + (int)ts.TotalSeconds;
-                    }
-                    else {
-                        t += "0" + (int)ts.TotalMinutes + (int)ts.TotalSeconds;
-                    }
-                } else {
-                    t += (int)ts.TotalMinutes + ":";
-
-                    if (ts.TotalSeconds % 60 < 10) {
-                        t += (int)ts.TotalMinutes + ":0" + (int)ts.TotalSeconds;
-                    }
-                    else {
-                        t += (int)ts.TotalMinutes + (int)ts.TotalSeconds;
-                    }
+                if (ts.TotalSeconds % 60 < 10) {
+                    t += (int)ts.TotalMinutes + ":0" + ((int)ts.TotalSeconds % 60);
+                }
+                else {
+                    t += (int)ts.TotalMinutes + ":" + ((int)ts.TotalSeconds % 60);
                 }
             }
 
+            // Total song length
             t += "/";
 
             if (waveFileReaders [0].TotalTime.TotalSeconds % 60 < 10) {
@@ -445,12 +487,14 @@ namespace WindowsFormsApp1
 
         private delegate void safeCallDelegate();
 
+        // Updates UI every second
         private void UpdateUI() {
             while (!closingForm) {
                 if (isPLaying) {
                     this.Invoke(updateTBVal);
 
                     this.Invoke(updateWVs);
+                    System.Threading.Thread.Sleep(1000);
                 } else {
                     break;
                 }
@@ -517,6 +561,7 @@ namespace WindowsFormsApp1
                 Text = waveFormName,
                 Visible = true
             };
+            waveFormLabels.Add(tempLabel);
             this.Controls.Add(tempLabel);
         }
 
@@ -530,7 +575,6 @@ namespace WindowsFormsApp1
                 Maximum = (int)wvs [0].WaveStream.TotalTime.TotalSeconds,
                 Visible = true,
             };
-
             tb.ValueChanged += this.TrackBar_Scroll;
             this.Controls.Add(tb);
 
@@ -549,7 +593,7 @@ namespace WindowsFormsApp1
 
         // Create play / pause button
         private void CreateButtons(int x, int y) {
-            Button playButton = new Button() {
+            playPause = new Button() {
                 AutoSize = true,
                 ForeColor = System.Drawing.Color.Black,
                 Location = new System.Drawing.Point(x - 100, y),
@@ -559,9 +603,8 @@ namespace WindowsFormsApp1
                 Text = ("Play/Pause"),
                 UseVisualStyleBackColor = true,
             };
-
-            playButton.Click += new System.EventHandler(this.PlayPauseButton_Click);
-            this.Controls.Add(playButton);
+            playPause.Click += new System.EventHandler(this.PlayPauseButton_Click);
+            this.Controls.Add(playPause);
         }
 
         // Control's functionality
@@ -581,6 +624,7 @@ namespace WindowsFormsApp1
                 //waveOutEvents [wvIndex].Play();
 
                 StopAllTracks();
+
                 PlayAllTracks();
 
                 Console.WriteLine("resuming track at " + waveFileReaders [wvIndex].CurrentTime.TotalMilliseconds);

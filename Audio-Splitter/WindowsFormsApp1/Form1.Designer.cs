@@ -38,6 +38,7 @@
             this.sourceErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.destErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.sourceToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AppTitle = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.sourceErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.destErrorProvider)).BeginInit();
@@ -45,6 +46,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.AppTitle);
             this.panel1.Controls.Add(this.YoutubeLinkTextBox);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
@@ -53,18 +55,20 @@
             this.panel1.Controls.Add(this.DestinationTextBox);
             this.panel1.Controls.Add(this.DestinationBtn);
             this.panel1.Controls.Add(this.SourceTextBox);
-            this.panel1.Location = new System.Drawing.Point(-1, 8);
+            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 360);
+            this.panel1.Size = new System.Drawing.Size(460, 554);
             this.panel1.TabIndex = 9;
             // 
             // YoutubeLinkTextBox
             // 
             this.YoutubeLinkTextBox.BackColor = System.Drawing.Color.DimGray;
             this.YoutubeLinkTextBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.YoutubeLinkTextBox.Location = new System.Drawing.Point(13, 74);
+            this.YoutubeLinkTextBox.Location = new System.Drawing.Point(13, 209);
+            this.YoutubeLinkTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.YoutubeLinkTextBox.Name = "YoutubeLinkTextBox";
-            this.YoutubeLinkTextBox.Size = new System.Drawing.Size(247, 20);
+            this.YoutubeLinkTextBox.Size = new System.Drawing.Size(368, 26);
             this.YoutubeLinkTextBox.TabIndex = 15;
             this.YoutubeLinkTextBox.Text = "Enter youtube link";
             this.YoutubeLinkTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -74,9 +78,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(133, 54);
+            this.label1.Location = new System.Drawing.Point(193, 178);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(23, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "or";
             // 
@@ -89,18 +94,20 @@
             "Vocals + Accompaniment",
             "Vocals + Drums + Bass + Other",
             "Vocals + Drums + Bass + Piano + Other"});
-            this.comboBox1.Location = new System.Drawing.Point(13, 174);
+            this.comboBox1.Location = new System.Drawing.Point(13, 363);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 21);
+            this.comboBox1.Size = new System.Drawing.Size(262, 28);
             this.comboBox1.TabIndex = 13;
             this.comboBox1.Text = "Split options";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // SourceBtn
             // 
-            this.SourceBtn.Location = new System.Drawing.Point(196, 31);
+            this.SourceBtn.Location = new System.Drawing.Point(285, 139);
+            this.SourceBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SourceBtn.Name = "SourceBtn";
-            this.SourceBtn.Size = new System.Drawing.Size(75, 23);
+            this.SourceBtn.Size = new System.Drawing.Size(112, 35);
             this.SourceBtn.TabIndex = 11;
             this.SourceBtn.Text = "Source";
             this.SourceBtn.UseVisualStyleBackColor = true;
@@ -108,11 +115,12 @@
             // 
             // ProcessBtn
             // 
-            this.ProcessBtn.Location = new System.Drawing.Point(93, 293);
+            this.ProcessBtn.Location = new System.Drawing.Point(140, 453);
+            this.ProcessBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ProcessBtn.Name = "ProcessBtn";
-            this.ProcessBtn.Size = new System.Drawing.Size(75, 23);
+            this.ProcessBtn.Size = new System.Drawing.Size(158, 43);
             this.ProcessBtn.TabIndex = 10;
-            this.ProcessBtn.Text = "Prcoess";
+            this.ProcessBtn.Text = "Process";
             this.ProcessBtn.UseVisualStyleBackColor = true;
             this.ProcessBtn.Click += new System.EventHandler(this.ProcessBtn_Click);
             // 
@@ -120,17 +128,19 @@
             // 
             this.DestinationTextBox.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.DestinationTextBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.DestinationTextBox.Location = new System.Drawing.Point(13, 116);
+            this.DestinationTextBox.Location = new System.Drawing.Point(13, 273);
+            this.DestinationTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DestinationTextBox.Name = "DestinationTextBox";
-            this.DestinationTextBox.Size = new System.Drawing.Size(176, 20);
+            this.DestinationTextBox.Size = new System.Drawing.Size(262, 26);
             this.DestinationTextBox.TabIndex = 9;
             this.DestinationTextBox.MouseHover += new System.EventHandler(this.DestinationTextBox_MouseHover);
             // 
             // DestinationBtn
             // 
-            this.DestinationBtn.Location = new System.Drawing.Point(195, 116);
+            this.DestinationBtn.Location = new System.Drawing.Point(283, 269);
+            this.DestinationBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DestinationBtn.Name = "DestinationBtn";
-            this.DestinationBtn.Size = new System.Drawing.Size(75, 23);
+            this.DestinationBtn.Size = new System.Drawing.Size(112, 35);
             this.DestinationBtn.TabIndex = 8;
             this.DestinationBtn.Text = "Destination";
             this.DestinationBtn.UseVisualStyleBackColor = true;
@@ -140,9 +150,10 @@
             // 
             this.SourceTextBox.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.SourceTextBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.SourceTextBox.Location = new System.Drawing.Point(13, 31);
+            this.SourceTextBox.Location = new System.Drawing.Point(13, 143);
+            this.SourceTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SourceTextBox.Name = "SourceTextBox";
-            this.SourceTextBox.Size = new System.Drawing.Size(176, 20);
+            this.SourceTextBox.Size = new System.Drawing.Size(262, 26);
             this.SourceTextBox.TabIndex = 7;
             this.SourceTextBox.MouseHover += new System.EventHandler(this.SourceTextBox_MouseHover);
             // 
@@ -160,14 +171,29 @@
             this.sourceToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.sourceToolTip.ToolTipTitle = "Path";
             // 
+            // AppTitle
+            // 
+            this.AppTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AppTitle.AutoSize = true;
+            this.AppTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AppTitle.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AppTitle.ForeColor = System.Drawing.SystemColors.Window;
+            this.AppTitle.Location = new System.Drawing.Point(67, 50);
+            this.AppTitle.Name = "AppTitle";
+            this.AppTitle.Size = new System.Drawing.Size(231, 39);
+            this.AppTitle.TabIndex = 16;
+            this.AppTitle.Text = "Audio Splitter";
+            this.AppTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // AudioSplitter
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(273, 370);
+            this.ClientSize = new System.Drawing.Size(460, 569);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AudioSplitter";
             this.Text = "Audio Splitter";
             this.panel1.ResumeLayout(false);
@@ -191,6 +217,7 @@
         private System.Windows.Forms.ErrorProvider sourceErrorProvider;
         private System.Windows.Forms.ErrorProvider destErrorProvider;
         private System.Windows.Forms.ToolTip sourceToolTip;
+        private System.Windows.Forms.Label AppTitle;
     }
 }
 

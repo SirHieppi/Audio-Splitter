@@ -10,3 +10,28 @@
 ---------------------------------------
 1/6/2020 7:35:29 PM
 
+---------------------------------------
+7/22/2020 2:38:54 PM
+
+spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/[MV] SURAN(수란) _ Love Story (Feat. CRUSH)(러브스토리 (Feat. 크러쉬))-kDM5c5ImW_Y.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 2
+command to run bat is spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/[MV] SURAN(수란) _ Love Story (Feat. CRUSH)(러브스토리 (Feat. 크러쉬))-kDM5c5ImW_Y.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 2
+spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/[MV] SURAN(수란) _ Love Story (Feat. CRUSH)(러브스토리 (Feat. 크러쉬))-kDM5c5ImW_Y.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 2
+
+
+----------Start of spleeter shell script output----------
+Microsoft Windows [Version 10.0.18362.959]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Split---------------------------------------
+7/22/2020 2:40:21 PM
+
+spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/Lovewave - love wave-8bD4DpXhK8U.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 4
+command to run bat is spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/Lovewave - love wave-8bD4DpXhK8U.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 4
+spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/Lovewave - love wave-8bD4DpXhK8U.mp3" "C:/Users/SirHieppi/Documents/GitHub/Audio-Splitter/Audio-Splitter/WindowsFormsApp1/bin/Release" 4
+
+
+----------Start of spleeter shell script output----------
+Microsoft Windows [Version 10.0.18362.959]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\Users\SirHieppi\Documents\GitHub\Audio-Splitter\Audio-Splitter\WindowsFormsApp1\bin\Release>spleeterHandler.bat -file "C:/Users/SirHieppi/Music/k-tunes/Lovewave - love wave-8bD4Dp
